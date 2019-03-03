@@ -18,6 +18,4 @@ public class TestCategory {
 
     @Column(nullable = false)
     private String name;
-
-    public TestCategory(){}
 }

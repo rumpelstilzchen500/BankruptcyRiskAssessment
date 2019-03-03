@@ -8,10 +8,10 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity (name = "User")
-@Table (name = "user")
+@Entity (name = "Users")
+@Table (name = "users")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
