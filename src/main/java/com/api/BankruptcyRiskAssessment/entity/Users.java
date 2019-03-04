@@ -30,13 +30,18 @@ public class Users implements Serializable {
 
     @Column(nullable = true)
     @Size(min = 5, max = 20)
-    private String surname;
+    private String login;
+
+    @Column(nullable = true)
+    @Size(min = 5, max = 20)
+    private String password;
 
     @Column(nullable = true)
     private String email;
 
     @Column(nullable = true)
-    private Long phone;
+    @Size(min = 6, max = 15)
+    private String phone;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "departmentId", nullable = false)

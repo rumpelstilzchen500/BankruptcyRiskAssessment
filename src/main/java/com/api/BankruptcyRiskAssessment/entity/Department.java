@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -30,7 +31,6 @@ public class Department {
     private String email;
 
     @Column(nullable = true)
-    private Integer phone;
-
-
+    @Size(min = 6, max = 15)
+    private String phone;
 }

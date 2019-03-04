@@ -9,7 +9,7 @@ create table company
   edrpou           int4         not null,
   ipn              int4,
   kind_of_company  varchar(255) not null,
-  phone            int4,
+  phone            varchar(15),
   quad_description varchar(255) not null,
   primary key (company_id)
 );
@@ -28,7 +28,7 @@ create table department
   email         varchar(255),
   head          int4         not null,
   name          varchar(255) not null,
-  phone         int4,
+  phone         varchar(15),
   company_id    int8         not null,
   primary key (department_id)
 );
@@ -89,8 +89,9 @@ create table users
   email         varchar(255),
   first_name    varchar(20) not null,
   last_name     varchar(20) not null,
-  phone         int8,
-  surname       varchar(20),
+  login         varchar(20),
+  password      varchar(20),
+  phone         varchar(15),
   department_id int8        not null,
   role_id       int8        not null,
   primary key (id)

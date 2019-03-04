@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -35,7 +36,8 @@ public class Company {
     private String address;
 
     @Column(nullable = true)
-    private Integer phone;
+    @Size(min = 6, max = 15)
+    private String phone;
 
     @Column(nullable = true)
     private Boolean confirmation;
