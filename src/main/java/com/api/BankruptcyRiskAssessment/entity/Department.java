@@ -31,4 +31,6 @@ public class Department {
 
     @Column(nullable = true)
     private Integer phone;
+
+
 }
