@@ -54,7 +54,7 @@ create table question
 create table role
 (
   role_id int8         not null,
-  name    varchar(255) not null,
+  role_name    varchar(255) not null,
   primary key (role_id)
 );
 
@@ -73,6 +73,13 @@ create table test_category
   primary key (test_category_id)
 );
 
+create table user_role
+(
+  user_id int8 not null,
+  role_id int8 not null,
+  primary key (user_id, role_id)
+);
+
 create table user_efficiency_factor
 (
   id                int8 not null,
@@ -85,7 +92,7 @@ create table user_efficiency_factor
 
 create table users
 (
-  id            int8        not null,
+  user_id       int8        not null,
   email         varchar(255),
   first_name    varchar(20) not null,
   last_name     varchar(20) not null,
@@ -93,27 +100,32 @@ create table users
   password      varchar(20),
   phone         varchar(15),
   department_id int8        not null,
-  role_id       int8        not null,
-  primary key (id)
+  primary key (user_id)
 );
 
-alter table if exists company
+alter table company
   add constraint UK_ffbbveb4nelo8vtef4ffs857g unique (edrpou);
 
-alter table if exists company
+alter table company
   add constraint UK_olvtdd0wxr1ofssh3030ahwff unique (ipn);
 
-alter table if exists department
+alter table user_role
+  add constraint UK_it77eq964jhfqtu54081ebtio unique (role_id);
+
+alter table department
   add constraint FKh1m88q0f7sc0mk76kju4kcn6f foreign key (company_id) references company;
 
-alter table if exists question
+alter table question
   add constraint FK8hejcpbbiq1qje11346akp3uj foreign key (test_id) references test;
 
-alter table if exists test
+alter table test
   add constraint FKlxkmp6ha6dq7k1g62hs9ssjl7 foreign key (test_category_id) references test_category;
 
-alter table if exists users
-  add constraint FKfi832e3qv89fq376fuh8920y4 foreign key (department_id) references department;
+alter table user_role
+  add constraint FKa68196081fvovjhkek5m97n3y foreign key (role_id) references role;
 
-alter table if exists users
-  add constraint FK4qu1gr772nnf6ve5af002rwya foreign key (role_id) references role;
+alter table user_role
+  add constraint FKj345gk1bovqvfame88rcx7yyx foreign key (user_id) references users;
+
+alter table users
+  add constraint FKfi832e3qv89fq376fuh8920y4 foreign key (department_id) references department;
